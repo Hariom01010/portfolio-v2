@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { skillNames } from "../constants";
 import {Card} from "./index"
+
+type Category = "frontend" | "backend" | "tools"
+
 function Skills() {
   const [field, setField] = useState("frontend");
-  const [skills, setSkills] = useState(skillNames.frontend);
+  const [skills, setSkills] = useState<{ [key: string]: { imgSrc: string; name: string; desc: string } }>(skillNames.frontend);
 
   const setFieldSkills = (fieldName: string)=>{
     setField(fieldName);
-    setSkills(skillNames[fieldName])
+    setSkills(skillNames[fieldName as Category])
   }
 
   return (
